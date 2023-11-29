@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConferenceApplication.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,33 @@ namespace ConferenceApplication
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new EventListPage());
+            
         }
+
+        private void MainFrame_OnNavigated(object sender, NavigationEventArgs e)
+        {
+            if (!(e.Content is Page page)) return;
+            this.Title = $"Conference - {page.Title}";
+
+            if (page is EventListPage)
+            {
+                ButtonBack.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                ButtonBack.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                MainFrame.GoBack();
+            }
+        }
+
+
     }
 }

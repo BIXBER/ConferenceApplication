@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище conferenceModelContainer" CdmEntityContainer="conferenceEntities">
+    <EntitySetMapping Name="activities">
+      <EntityTypeMapping TypeName="conferenceModel.activities">
+        <MappingFragment StoreEntitySet="activities">
+          <ScalarProperty Name="activity_id" ColumnName="activity_id" />
+          <ScalarProperty Name="activity_title" ColumnName="activity_title" />
+          <ScalarProperty Name="event_id" ColumnName="event_id" />
+          <ScalarProperty Name="day_number" ColumnName="day_number" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="moderator_id" ColumnName="moderator_id" />
+          <ScalarProperty Name="first_jury_id" ColumnName="first_jury_id" />
+          <ScalarProperty Name="second_jury_id" ColumnName="second_jury_id" />
+          <ScalarProperty Name="third_jury_id" ColumnName="third_jury_id" />
+          <ScalarProperty Name="fourth_jury_id" ColumnName="fourth_jury_id" />
+          <ScalarProperty Name="fifth_jury_id" ColumnName="fifth_jury_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="activity_champions">
+      <EntityTypeMapping TypeName="conferenceModel.activity_champions">
+        <MappingFragment StoreEntitySet="activity_champions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="activity_id" ColumnName="activity_id" />
+          <ScalarProperty Name="champion_id" ColumnName="champion_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="conferenceModel.cities">
+        <MappingFragment StoreEntitySet="cities">
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="img_url" ColumnName="img_url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countries">
+      <EntityTypeMapping TypeName="conferenceModel.countries">
+        <MappingFragment StoreEntitySet="countries">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="eng_title" ColumnName="eng_title" />
+          <ScalarProperty Name="country_char_code" ColumnName="country_char_code" />
+          <ScalarProperty Name="country_code" ColumnName="country_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="events">
+      <EntityTypeMapping TypeName="conferenceModel.events">
+        <MappingFragment StoreEntitySet="events">
+          <ScalarProperty Name="event_id" ColumnName="event_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="duration_days" ColumnName="duration_days" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jury">
+      <EntityTypeMapping TypeName="conferenceModel.jury">
+        <MappingFragment StoreEntitySet="jury">
+          <ScalarProperty Name="jury_id" ColumnName="jury_id" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="speciality" ColumnName="speciality" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="conferenceModel.members">
+        <MappingFragment StoreEntitySet="members">
+          <ScalarProperty Name="member_id" ColumnName="member_id" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="moderators">
+      <EntityTypeMapping TypeName="conferenceModel.moderators">
+        <MappingFragment StoreEntitySet="moderators">
+          <ScalarProperty Name="moderator_id" ColumnName="moderator_id" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="speciality" ColumnName="speciality" />
+          <ScalarProperty Name="event" ColumnName="event" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sponsors">
+      <EntityTypeMapping TypeName="conferenceModel.sponsors">
+        <MappingFragment StoreEntitySet="sponsors">
+          <ScalarProperty Name="sponsor_id" ColumnName="sponsor_id" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

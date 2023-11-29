@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f9db02229b242b78b8fb9d60e9555a8" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="conferenceModel.activities" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="conferenceModel.activity_champions" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="conferenceModel.cities" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="conferenceModel.countries" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="conferenceModel.events" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="conferenceModel.jury" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="conferenceModel.members" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="conferenceModel.moderators" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="conferenceModel.sponsors" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="conferenceModel.FK__activity___activ__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_activities_event_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_activities_fifth_jury_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_activities_first_jury_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_activities_fourth_jury_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_activities_moderator_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_activities_second_jury_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_activities_third_jury_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_activity_champions_champion_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_events_city_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_jury_country_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_members_country_id" ManuallyRouted="false" />
+        <AssociationConnector Association="conferenceModel.fk_sponsors_country_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\user\Dev\ConferenceApplication\obj\Debug\
+C:\Users\user\Dev\ConferenceApplication\ConferenceApplication\obj\Debug\
 ConferenceApplication
 none
 false
 DEBUG;TRACE
-C:\Users\user\Dev\ConferenceApplication\App.xaml
-1219584333
-
-6-502434485
-13-1310406943
-MainWindow.xaml;
+C:\Users\user\Dev\ConferenceApplication\ConferenceApplication\App.xaml
+5-1004484342
+22035508349
+221987054810
+160924935822
+MainWindow.xaml;Pages\AuthPage.xaml;Pages\EventListPage.xaml;Pages\RegistrationPage.xaml;Windows\SponsorWindow.xaml;
 
 True
 

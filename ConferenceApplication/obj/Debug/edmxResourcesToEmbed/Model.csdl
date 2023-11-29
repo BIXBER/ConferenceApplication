@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="conferenceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="activities">
+    <Key>
+      <PropertyRef Name="activity_id" />
+    </Key>
+    <Property Name="activity_id" Type="Int32" Nullable="false" />
+    <Property Name="activity_title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="event_id" Type="Int32" Nullable="false" />
+    <Property Name="day_number" Type="Byte" Nullable="false" />
+    <Property Name="start_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="moderator_id" Type="Int32" />
+    <Property Name="first_jury_id" Type="Int32" />
+    <Property Name="second_jury_id" Type="Int32" />
+    <Property Name="third_jury_id" Type="Int32" />
+    <Property Name="fourth_jury_id" Type="Int32" />
+    <Property Name="fifth_jury_id" Type="Int32" />
+    <NavigationProperty Name="activity_champions" Relationship="Self.FK__activity___activ__2A164134" FromRole="activities" ToRole="activity_champions" />
+    <NavigationProperty Name="events" Relationship="Self.fk_activities_event_id" FromRole="activities" ToRole="events" />
+    <NavigationProperty Name="jury" Relationship="Self.fk_activities_fifth_jury_id" FromRole="activities" ToRole="jury" />
+    <NavigationProperty Name="jury1" Relationship="Self.fk_activities_first_jury_id" FromRole="activities" ToRole="jury" />
+    <NavigationProperty Name="jury2" Relationship="Self.fk_activities_fourth_jury_id" FromRole="activities" ToRole="jury" />
+    <NavigationProperty Name="moderators" Relationship="Self.fk_activities_moderator_id" FromRole="activities" ToRole="moderators" />
+    <NavigationProperty Name="jury3" Relationship="Self.fk_activities_second_jury_id" FromRole="activities" ToRole="jury" />
+    <NavigationProperty Name="jury4" Relationship="Self.fk_activities_third_jury_id" FromRole="activities" ToRole="jury" />
+  </EntityType>
+  <EntityType Name="activity_champions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="activity_id" Type="Int32" Nullable="false" />
+    <Property Name="champion_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="activities" Relationship="Self.FK__activity___activ__2A164134" FromRole="activity_champions" ToRole="activities" />
+    <NavigationProperty Name="members" Relationship="Self.fk_activity_champions_champion_id" FromRole="activity_champions" ToRole="members" />
+  </EntityType>
+  <EntityType Name="cities">
+    <Key>
+      <PropertyRef Name="city_id" />
+    </Key>
+    <Property Name="city_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="img_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="events" Relationship="Self.fk_events_city_id" FromRole="cities" ToRole="events" />
+  </EntityType>
+  <EntityType Name="countries">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="eng_title" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="country_char_code" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="country_code" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="jury" Relationship="Self.fk_jury_country_id" FromRole="countries" ToRole="jury" />
+    <NavigationProperty Name="members" Relationship="Self.fk_members_country_id" FromRole="countries" ToRole="members" />
+    <NavigationProperty Name="sponsors" Relationship="Self.fk_sponsors_country_id" FromRole="countries" ToRole="sponsors" />
+  </EntityType>
+  <EntityType Name="events">
+    <Key>
+      <PropertyRef Name="event_id" />
+    </Key>
+    <Property Name="event_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="duration_days" Type="Int32" Nullable="false" />
+    <Property Name="city_id" Type="Int32" Nullable="false" />
+    <Property Name="photo_path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="activities" Relationship="Self.fk_activities_event_id" FromRole="events" ToRole="activities" />
+    <NavigationProperty Name="cities" Relationship="Self.fk_events_city_id" FromRole="events" ToRole="cities" />
+  </EntityType>
+  <EntityType Name="jury">
+    <Key>
+      <PropertyRef Name="jury_id" />
+    </Key>
+    <Property Name="jury_id" Type="Int32" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="email_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="country" Type="Int32" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="speciality" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="60" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="photo_path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="activities" Relationship="Self.fk_activities_fifth_jury_id" FromRole="jury" ToRole="activities" />
+    <NavigationProperty Name="activities1" Relationship="Self.fk_activities_first_jury_id" FromRole="jury" ToRole="activities" />
+    <NavigationProperty Name="activities2" Relationship="Self.fk_activities_fourth_jury_id" FromRole="jury" ToRole="activities" />
+    <NavigationProperty Name="activities3" Relationship="Self.fk_activities_second_jury_id" FromRole="jury" ToRole="activities" />
+    <NavigationProperty Name="activities4" Relationship="Self.fk_activities_third_jury_id" FromRole="jury" ToRole="activities" />
+    <NavigationProperty Name="countries" Relationship="Self.fk_jury_country_id" FromRole="jury" ToRole="countries" />
+  </EntityType>
+  <EntityType Name="members">
+    <Key>
+      <PropertyRef Name="member_id" />
+    </Key>
+    <Property Name="member_id" Type="Int32" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="country" Type="Int32" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="photo_path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="activity_champions" Relationship="Self.fk_activity_champions_champion_id" FromRole="members" ToRole="activity_champions" />
+    <NavigationProperty Name="countries" Relationship="Self.fk_members_country_id" FromRole="members" ToRole="countries" />
+  </EntityType>
+  <EntityType Name="moderators">
+    <Key>
+      <PropertyRef Name="moderator_id" />
+    </Key>
+    <Property Name="moderator_id" Type="Int32" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="email_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="country" Type="Int32" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="speciality" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="event" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="photo_path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="activities" Relationship="Self.fk_activities_moderator_id" FromRole="moderators" ToRole="activities" />
+  </EntityType>
+  <EntityType Name="sponsors">
+    <Key>
+      <PropertyRef Name="sponsor_id" />
+    </Key>
+    <Property Name="sponsor_id" Type="Int32" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="country" Type="Int32" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="photo_path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="countries" Relationship="Self.fk_sponsors_country_id" FromRole="sponsors" ToRole="countries" />
+  </EntityType>
+  <Association Name="FK__activity___activ__2A164134">
+    <End Role="activities" Type="Self.activities" Multiplicity="1" />
+    <End Role="activity_champions" Type="Self.activity_champions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="activities">
+        <PropertyRef Name="activity_id" />
+      </Principal>
+      <Dependent Role="activity_champions">
+        <PropertyRef Name="activity_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_activities_event_id">
+    <End Role="events" Type="Self.events" Multiplicity="1" />
+    <End Role="activities" Type="Self.activities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="events">
+        <PropertyRef Name="event_id" />
+      </Principal>
+      <Dependent Role="activities">
+        <PropertyRef Name="event_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_activities_fifth_jury_id">
+    <End Role="jury" Type="Self.jury" Multiplicity="0..1" />
+    <End Role="activities" Type="Self.activities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jury">
+        <PropertyRef Name="jury_id" />
+      </Principal>
+      <Dependent Role="activities">
+        <PropertyRef Name="fifth_jury_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_activities_first_jury_id">
+    <End Role="jury" Type="Self.jury" Multiplicity="0..1" />
+    <End Role="activities" Type="Self.activities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jury">
+        <PropertyRef Name="jury_id" />
+      </Principal>
+      <Dependent Role="activities">
+        <PropertyRef Name="first_jury_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_activities_fourth_jury_id">
+    <End Role="jury" Type="Self.jury" Multiplicity="0..1" />
+    <End Role="activities" Type="Self.activities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jury">
+        <PropertyRef Name="jury_id" />
+      </Principal>
+      <Dependent Role="activities">
+        <PropertyRef Name="fourth_jury_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_activities_moderator_id">
+    <End Role="moderators" Type="Self.moderators" Multiplicity="0..1" />
+    <End Role="activities" Type="Self.activities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="moderators">
+        <PropertyRef Name="moderator_id" />
+      </Principal>
+      <Dependent Role="activities">
+        <PropertyRef Name="moderator_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_activities_second_jury_id">
+    <End Role="jury" Type="Self.jury" Multiplicity="0..1" />
+    <End Role="activities" Type="Self.activities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jury">
+        <PropertyRef Name="jury_id" />
+      </Principal>
+      <Dependent Role="activities">
+        <PropertyRef Name="second_jury_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_activities_third_jury_id">
+    <End Role="jury" Type="Self.jury" Multiplicity="0..1" />
+    <End Role="activities" Type="Self.activities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jury">
+        <PropertyRef Name="jury_id" />
+      </Principal>
+      <Dependent Role="activities">
+        <PropertyRef Name="third_jury_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_activity_champions_champion_id">
+    <End Role="members" Type="Self.members" Multiplicity="1" />
+    <End Role="activity_champions" Type="Self.activity_champions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="members">
+        <PropertyRef Name="member_id" />
+      </Principal>
+      <Dependent Role="activity_champions">
+        <PropertyRef Name="champion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_events_city_id">
+    <End Role="cities" Type="Self.cities" Multiplicity="1" />
+    <End Role="events" Type="Self.events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cities">
+        <PropertyRef Name="city_id" />
+      </Principal>
+      <Dependent Role="events">
+        <PropertyRef Name="city_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_jury_country_id">
+    <End Role="countries" Type="Self.countries" Multiplicity="1" />
+    <End Role="jury" Type="Self.jury" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="countries">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="jury">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_members_country_id">
+    <End Role="countries" Type="Self.countries" Multiplicity="1" />
+    <End Role="members" Type="Self.members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="countries">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="members">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sponsors_country_id">
+    <End Role="countries" Type="Self.countries" Multiplicity="1" />
+    <End Role="sponsors" Type="Self.sponsors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="countries">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="sponsors">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="conferenceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="activities" EntityType="Self.activities" />
+    <EntitySet Name="activity_champions" EntityType="Self.activity_champions" />
+    <EntitySet Name="cities" EntityType="Self.cities" />
+    <EntitySet Name="countries" EntityType="Self.countries" />
+    <EntitySet Name="events" EntityType="Self.events" />
+    <EntitySet Name="jury" EntityType="Self.jury" />
+    <EntitySet Name="members" EntityType="Self.members" />
+    <EntitySet Name="moderators" EntityType="Self.moderators" />
+    <EntitySet Name="sponsors" EntityType="Self.sponsors" />
+    <AssociationSet Name="FK__activity___activ__2A164134" Association="Self.FK__activity___activ__2A164134">
+      <End Role="activities" EntitySet="activities" />
+      <End Role="activity_champions" EntitySet="activity_champions" />
+    </AssociationSet>
+    <AssociationSet Name="fk_activities_event_id" Association="Self.fk_activities_event_id">
+      <End Role="events" EntitySet="events" />
+      <End Role="activities" EntitySet="activities" />
+    </AssociationSet>
+    <AssociationSet Name="fk_activities_fifth_jury_id" Association="Self.fk_activities_fifth_jury_id">
+      <End Role="jury" EntitySet="jury" />
+      <End Role="activities" EntitySet="activities" />
+    </AssociationSet>
+    <AssociationSet Name="fk_activities_first_jury_id" Association="Self.fk_activities_first_jury_id">
+      <End Role="jury" EntitySet="jury" />
+      <End Role="activities" EntitySet="activities" />
+    </AssociationSet>
+    <AssociationSet Name="fk_activities_fourth_jury_id" Association="Self.fk_activities_fourth_jury_id">
+      <End Role="jury" EntitySet="jury" />
+      <End Role="activities" EntitySet="activities" />
+    </AssociationSet>
+    <AssociationSet Name="fk_activities_moderator_id" Association="Self.fk_activities_moderator_id">
+      <End Role="moderators" EntitySet="moderators" />
+      <End Role="activities" EntitySet="activities" />
+    </AssociationSet>
+    <AssociationSet Name="fk_activities_second_jury_id" Association="Self.fk_activities_second_jury_id">
+      <End Role="jury" EntitySet="jury" />
+      <End Role="activities" EntitySet="activities" />
+    </AssociationSet>
+    <AssociationSet Name="fk_activities_third_jury_id" Association="Self.fk_activities_third_jury_id">
+      <End Role="jury" EntitySet="jury" />
+      <End Role="activities" EntitySet="activities" />
+    </AssociationSet>
+    <AssociationSet Name="fk_activity_champions_champion_id" Association="Self.fk_activity_champions_champion_id">
+      <End Role="members" EntitySet="members" />
+      <End Role="activity_champions" EntitySet="activity_champions" />
+    </AssociationSet>
+    <AssociationSet Name="fk_events_city_id" Association="Self.fk_events_city_id">
+      <End Role="cities" EntitySet="cities" />
+      <End Role="events" EntitySet="events" />
+    </AssociationSet>
+    <AssociationSet Name="fk_jury_country_id" Association="Self.fk_jury_country_id">
+      <End Role="countries" EntitySet="countries" />
+      <End Role="jury" EntitySet="jury" />
+    </AssociationSet>
+    <AssociationSet Name="fk_members_country_id" Association="Self.fk_members_country_id">
+      <End Role="countries" EntitySet="countries" />
+      <End Role="members" EntitySet="members" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sponsors_country_id" Association="Self.fk_sponsors_country_id">
+      <End Role="countries" EntitySet="countries" />
+      <End Role="sponsors" EntitySet="sponsors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
